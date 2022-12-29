@@ -1,17 +1,31 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../Context/UserContext';
 
 const LogIn = () => {
+    const {createNewUser}= useContext(authContext)
+    const provider = new GoogleAuthProvider()
 
     const handleLogIn = event => {
         event.preventDefault()
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;    
-        const sellers = form.sellers.value;
-        const logInInfo = { email, password, sellers  }
+       
+        const logInInfo = { email, password,}
         console.log(logInInfo)
         form.reset()
+    }
+
+    const  handleGoogleSignIn =()=>{
+        createNewUser(provider)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error => console.log('error', error))
+
     }
 
 
@@ -44,7 +58,7 @@ const LogIn = () => {
                            
                         </select> 
                         <div className="divider">OR</div>
-                        <button className="btn btn-outline btn-secondary">GOOGLE</button>
+                        <button onClick={handleGoogleSignIn} className="btn btn-outline btn-secondary">GOOGLE</button>
 
                         <label className="label">
                             <p className="label-text-alt">Already new to our webisite? <Link to='/register'><span className='text-orange-500'>Register</span></Link></p>
