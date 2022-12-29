@@ -27,7 +27,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">Oclock</Link>
                 </div>
                 
             </div>
