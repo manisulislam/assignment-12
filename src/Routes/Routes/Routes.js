@@ -1,4 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
+import Cartier from "../../Category/Cartier/Cartier";
+import Omega from "../../Category/Omega/Omega";
+import Rolex from "../../Category/Rolex/Rolex";
 import Dashboard from "../../DashboardLayout/Dashboard";
 import Main from "../../Layout/Main";
 import Blog from "../../Pages/Blog/Blog";
@@ -27,7 +30,22 @@ const routes = createBrowserRouter([
             {
                 path: '/register',
                 element:<Register></Register>
-            }
+            },
+            {
+                path: '/category/1',
+                element:<Rolex></Rolex>
+
+            },
+            {
+                path: '/category/2',
+                element:<Omega></Omega>
+
+            },
+            {
+                path: '/category/3',
+                element:<Cartier></Cartier>
+
+            },
         ]
         
     },
