@@ -1,9 +1,10 @@
 import React from 'react';
+import SectionOne from '../SectionOne/SectionOne';
 
 const Home = () => {
     return (
         <div>
-            <h2>this is home</h2>
+            <SectionOne></SectionOne>
         </div>
     );
 };
