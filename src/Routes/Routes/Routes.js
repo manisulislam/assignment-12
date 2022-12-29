@@ -9,6 +9,7 @@ import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import LogIn from "../../Pages/LogIn/LogIn";
 import Register from "../../Pages/Register/Register";
+import PrivateRoutes from "../PrivateRoute/PrivateRoutes";
 
 const routes = createBrowserRouter([
     {
@@ -33,17 +34,17 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/category/1',
-                element:<Rolex></Rolex>
+                element:<PrivateRoutes><Rolex></Rolex></PrivateRoutes>
 
             },
             {
                 path: '/category/2',
-                element:<Omega></Omega>
+                element:<PrivateRoutes><Omega></Omega></PrivateRoutes>
 
             },
             {
                 path: '/category/3',
-                element:<Cartier></Cartier>
+                element:<PrivateRoutes><Cartier></Cartier></PrivateRoutes>
 
             },
         ]
