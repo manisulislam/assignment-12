@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../Context/UserContext';
 
 const Register = () => {
+    const {userNew}= useContext(authContext)
     const handleRegister = event => {
         event.preventDefault()
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;    
-        const sellers = form.sellers.value;
-        const logInInfo = { email, password, sellers  }
+        
+        const logInInfo = { email, password, }
         console.log(logInInfo)
+        userNew(email, password)
+        .then(result=> {
+            const user = result.user
+            console.log(user)
+        })
+        .catch(error => console.log('error', error))
         form.reset()
+
     }
+    
 
 
     return (

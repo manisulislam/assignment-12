@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { authContext } from '../../Context/UserContext';
 
 const LogIn = () => {
-    const {createNewUser}= useContext(authContext)
+    const {createNewUser,userSignIn}= useContext(authContext)
     const provider = new GoogleAuthProvider()
 
     const handleLogIn = event => {
@@ -15,6 +15,12 @@ const LogIn = () => {
        
         const logInInfo = { email, password,}
         console.log(logInInfo)
+        userSignIn(email, password)
+        .then(result =>{
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error => console.log('error', error))
         form.reset()
     }
 
