@@ -1,10 +1,12 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/UserContext';
 
 const LogIn = () => {
+
     const {createNewUser,userSignIn}= useContext(authContext)
+    const navigate = useNavigate()
     const provider = new GoogleAuthProvider()
 
     const handleLogIn = event => {
@@ -19,6 +21,7 @@ const LogIn = () => {
         .then(result =>{
             const user = result.user;
             console.log(user)
+            navigate('/')
         })
         .catch(error => console.log('error', error))
         form.reset()

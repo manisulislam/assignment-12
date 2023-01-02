@@ -4,11 +4,12 @@ import { Outlet } from 'react-router-dom';
 const Dashboard = () => {
     return (
         <div>
-            <Dashboard></Dashboard>
-            <Outlet></Outlet>
-            
+            <h2>dashboard is comit</h2>
         </div>
-    );
+
+    )
+
+
 };
 
 export default Dashboard;
