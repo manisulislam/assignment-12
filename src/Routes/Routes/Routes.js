@@ -9,6 +9,7 @@ import Blog from "../../Pages/Blog/Blog";
 
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import AddProduct from "../../Pages/Dashboard/SellersDashboard/AddProduct/AddProduct";
+import MyProduct from "../../Pages/Dashboard/SellersDashboard/MyProduct/MyProduct";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import LogIn from "../../Pages/LogIn/LogIn";
@@ -37,21 +38,22 @@ const routes = createBrowserRouter([
                 element:<Register></Register>
             },
             {
-                path: '/category/1',
-                element:<PrivateRoutes><Rolex></Rolex></PrivateRoutes>,
+                path: '/category/:id',
+                element:<Rolex></Rolex>,
+                loader:({params})=>fetch(`http://localhost:5000/rolexWatch/${params.id}`)
                 
 
             },
-            {
-                path: '/category/2',
-                element:<PrivateRoutes><Omega></Omega></PrivateRoutes>
+            // {
+            //     path: '/category/2',
+            //     element:<PrivateRoutes><Omega></Omega></PrivateRoutes>
 
-            },
-            {
-                path: '/category/3',
-                element:<PrivateRoutes><Cartier></Cartier></PrivateRoutes>
+            // },
+            // {
+            //     path: '/category/3',
+            //     element:<PrivateRoutes><Cartier></Cartier></PrivateRoutes>
 
-            },
+            // },
         ]
         
     },
@@ -68,8 +70,8 @@ const routes = createBrowserRouter([
                 element:<AddProduct></AddProduct>
             },
             {
-                path: '/dashboard/myproduct',
-                element:<AddProduct></AddProduct>
+                path: '/dashboard/myProduct',
+                element:<MyProduct></MyProduct>
             },
 
         ]
