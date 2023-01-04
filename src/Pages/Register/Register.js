@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/UserContext';
 
 
@@ -9,11 +9,14 @@ const Register = () => {
     const { register, handleSubmit, reset } = useForm();
 
     // const [data, setData] = useState('')
+    const navigate =useNavigate()
+    
 
 
 
     // const onSubmit = data => console.log(data);
     const handleRegister = data => {
+
 
 
         const email = data.email
@@ -42,7 +45,9 @@ const Register = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                navigate('/')
             })
+
         reset()
 
 
