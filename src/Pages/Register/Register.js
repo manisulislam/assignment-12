@@ -17,21 +17,38 @@ const Register = () => {
 
 
         const email = data.email
+        const name = data.name;
+        const role = data.role
         const password = data.password;
         console.log(data)
 
-        const logInInfo = { email, password, }
-        console.log(logInInfo)
+        const users = { email,name, role }
+        console.log(users)
         userNew(email, password)
             .then(result => {
                 const user = result.user
                 console.log(user)
             })
             .catch(error => console.log('error', error))
+            fetch('http://localhost:5000/users',{
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                    
+                },
+                body: JSON.stringify(users)
+
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
         reset()
 
 
+
     }
+
 
 
 
@@ -81,7 +98,7 @@ const Register = () => {
                                 <span className="label-text">Select account</span>
 
                             </label>
-                            <select {...register("account")} className="select select-bordered">
+                            <select {...register("role")} className="select select-bordered">
                                 <option selected>BUYERS</option>
                                 <option>SELLERS</option>
 

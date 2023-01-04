@@ -4,12 +4,15 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, reset } = useForm()
     const [data, setData] = useState('')
     const navigate = useNavigate()
-    console.log(data)
+    // console.log(data)
 
     const handleProduct =data =>{
+        const imageKey = process.env.REACT_APP_imageKey
+        console.log(imageKey)
+        console.log(data)
         
 
         const product = {
@@ -17,6 +20,7 @@ const AddProduct = () => {
             price: data.price ,
             mobileNumber: data.mobileNumber ,
             years: data.years,
+            
             category: data.category ,
             condition: data.condition,
             location: data.location,
@@ -24,22 +28,25 @@ const AddProduct = () => {
 
         }
         
-        fetch('http://localhost:5000/addproduct',{
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body:JSON.stringify(product)
-        })
-        .then(res => res.json())
-        .then(result => {
-            setData(result)
-            toast.success('Your product added successfully')
-            navigate('/dashboard/myProduct')
-        })
-        .catch(error =>console.log(error))
+        // fetch('http://localhost:5000/addproduct',{
+        //     method: 'POST',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body:JSON.stringify(product)
+        // })
+        // .then(res => res.json())
+        // .then(result => {
+        //     setData(result)
+        //     toast.success('Your product added successfully')
+        //     navigate('/dashboard/myProduct')
+        // })
+        // .catch(error =>console.log(error))
+
+        reset()
     
     }
+    
     
     
     return (
@@ -114,12 +121,12 @@ const AddProduct = () => {
                     </select>
 
                 </div>
-                <div {...register("location", { required: true })} className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">SELECT LOCATION</span>
 
                     </label>
-                    <select className="select select-bordered">
+                    <select  {...register("location", { required: true })}  className="select select-bordered">
                         <option>DHAKA</option>
                         <option>CHITTAGONG</option>
                         <option>RAJSAHI</option>
@@ -130,19 +137,28 @@ const AddProduct = () => {
                     </select>
 
                 </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">PHOTO</span>
 
-                <div  {...register("description", { required: true })} className="form-control w-full max-w-xs">
+                    </label>
+                   <input type="file" className="input input-bordered w-full max-w-xs" {...register("img")} />
+
+
+                </div>
+
+                <div className="form-control w-full max-w-xs">
                     <label className="label">
                     <span className="label-text">DESCRIPTION</span>
                         
                     </label>
-                    <textarea className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+                    <textarea  {...register("description", { required: true })}  className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
                    
                 </div>
 
 
 
-                <input className="btn btn-outline btn-primary my-2 w-full max-w-xs mx-auto" type='submit'/> 
+                <input className="btn btn-outline btn-primary my-2 w-full max-w-xs mx-auto" type='submit' value="SUBMIT"/> 
                
             </form>
         </div>
