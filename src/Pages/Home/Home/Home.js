@@ -1,6 +1,9 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
 import CategorySection from '../CategorySection/CategorySection';
+
+
+
 import SectionOne from '../SectionOne/SectionOne';
 
 const Home = () => {
@@ -9,6 +12,8 @@ const Home = () => {
             <Banner></Banner>
             <SectionOne></SectionOne>
             <CategorySection></CategorySection>
+           
+            {/* <CategorySection></CategorySection> */}
            
         </div>
     );

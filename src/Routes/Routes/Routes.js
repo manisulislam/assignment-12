@@ -6,11 +6,14 @@ import DashboardLayout from "../../DashboardLayout/DashboardLayout";
 
 import Main from "../../Layout/Main";
 import Blog from "../../Pages/Blog/Blog";
+import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
+import MyOrders from "../../Pages/Dashboard/BuyersDashboard/MyOrders";
 
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import AddProduct from "../../Pages/Dashboard/SellersDashboard/AddProduct/AddProduct";
 import MyProduct from "../../Pages/Dashboard/SellersDashboard/MyProduct/MyProduct";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
+import CategorySection from "../../Pages/Home/CategorySection/CategorySection";
 import Home from "../../Pages/Home/Home/Home";
 import LogIn from "../../Pages/LogIn/LogIn";
 import Register from "../../Pages/Register/Register";
@@ -38,12 +41,20 @@ const routes = createBrowserRouter([
                 element:<Register></Register>
             },
             {
-                path: '/category/:id',
-                element:<Rolex></Rolex>,
-                loader:({params})=>fetch(`http://localhost:5000/rolexWatch/${params.id}`)
-                
+                path: '/category',
+                element: <CategorySection></CategorySection>,
 
             },
+            {
+                path: '/category/:id',
+                element:<Rolex></Rolex>
+            }
+
+
+
+
+
+            
             // {
             //     path: '/category/2',
             //     element:<PrivateRoutes><Omega></Omega></PrivateRoutes>
@@ -73,6 +84,15 @@ const routes = createBrowserRouter([
                 path: '/dashboard/myProduct',
                 element:<MyProduct></MyProduct>
             },
+            {
+                path: '/dashboard/allUsers',
+                element:<AllUsers></AllUsers>
+            },
+            {
+                path: '/dashboard/myOrders',
+                element:<MyOrders></MyOrders>
+            },
+
 
         ]
         
